@@ -1,0 +1,15 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+<header class="poll-header">
+  <h1>Poll Questions</h1>
+</header>
+{% if questions %}
+    {% for question in questions %}
+      <div class="poll-question">
+        <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
