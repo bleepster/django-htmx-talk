@@ -26,7 +26,6 @@ def results(request, question_id):
         "question": question,
     }
     return render(request, "polls/results.html", context)
-    pass
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
