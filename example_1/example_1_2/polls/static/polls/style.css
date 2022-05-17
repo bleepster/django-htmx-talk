@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  width: 1200px;
+  width: 500px;
   margin: 0 auto;
 
   display: grid;
@@ -26,13 +26,20 @@ body {
   justify-content: space-between;
 }
 
+.poll-question-choice {
+  font-size: 22px;
+}
+
 .poll-question {
-  padding: 0px 40px;
+  padding: 10px 40px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #00264d;
 }
 
 .result-entry {
+  font-size: 22px;
+
   padding: 5px;
   margin: 5px 5px;
 }
@@ -46,7 +53,9 @@ input[type=radio] {
 
 input[type=submit] {
   color: #fff;
+  width: 89px;
   border: none;
+  border-radius: 9px;
   background: #00264d;
   cursor: pointer;
 
@@ -84,14 +93,5 @@ a:link {
 
 a:visited {
   color: #00264d;
-}
-
-a:hover {
-  text-decoration: underline dotted #0073e6;
-}
-
-a:active {
-  background-color: black;
-  font-style: italic;
 }
 
