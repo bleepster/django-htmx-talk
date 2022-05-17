@@ -1,0 +1,26 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+<div class="login">
+  <form action="{% url "polls:login" %}" method="post">
+    {% csrf_token %}
+    <div class="login-username-group">
+      <div>
+        {{ login_form.username.label_tag }}
+      </div>
+      <div>
+        {{ login_form.username }}
+      </div>
+    </div>
+    <div class="login-password-group">
+      <div>
+        {{ login_form.password.label_tag }}
+      </div>
+      <div>
+        {{ login_form.password }}
+      </div>
+    </div>
+    <input type="submit" value="Login">
+  </form>
+</div>
+{% endblock %}
