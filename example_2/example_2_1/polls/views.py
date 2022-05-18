@@ -4,14 +4,24 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
 
 from .models import Question, Choice
+from .forms import PollsAuthenticationForm, PollsUserCreationForm
 
+
+def register(request):
+    if request.method == "POST":
+        form = PollsUserCreationForm(request.POST, label_suffix="")
+        if form.is_valid():
+            form.save()
+            return redirect("polls:login")
+    else:
+        form = PollsUserCreationForm(label_suffix="")
+    return render(request, "polls/register.html", context={"register_form": form})
 
 def user_login(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = PollsAuthenticationForm(request, data=request.POST, label_suffix="")
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
@@ -19,14 +29,12 @@ def user_login(request):
             if user:
                 login(request, user)
                 return redirect("polls:index")
-            else:
-                messages.error(request, "Invalid username or password.")
-        else:
-            messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm(label_suffix="")
+        messages.error(request, "Invalid username or password.")
+    else:
+        form = PollsAuthenticationForm(label_suffix="")
     return render(request, "polls/login.html", context={"login_form": form})
 
-
+@login_required
 def user_logout(request):
     logout(request)
     return redirect("polls:login")

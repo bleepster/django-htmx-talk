@@ -56,12 +56,35 @@ body {
   text-align: right;
 }
 
-.login-username-group {
+.login-input-group {
   padding-bottom: 11px;
 }
 
-.login-password-group {
+.login-error-message {
   padding-bottom: 11px;
+}
+
+ul.errorlist {
+  list-style-type: none;
+}
+
+.register-input-group {
+  padding-bottom: 11px;
+}
+
+.register-error-message {
+  padding-bottom: 11px;
+}
+
+input[type=text],
+input[type=password]
+{
+  border: none;
+  outline: none;
+  padding: 5px 5px 8px 0px;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: solid 1px #efefef;
 }
 
 input[type=radio] {
