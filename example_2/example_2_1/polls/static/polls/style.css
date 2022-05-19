@@ -74,10 +74,14 @@ ul.errorlist {
 
 .register-error-message {
   padding-bottom: 11px;
+  color: #ff8080;
+  font-size: 12px;
+  font-style: italic;
 }
 
 input[type=text],
-input[type=password]
+input[type=password],
+input[type=email]
 {
   border: none;
   outline: none;

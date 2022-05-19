@@ -7,12 +7,12 @@
     {% for field in register_form %}
       <div class="register-input-group">
         {{ field }}
-      </div>
-      <div class="register-error-message">
-        {% for error in field.errors %}
+        <div class="register-error-message">
+          {% for error in field.errors %}
             {{ error }}
-        {% endfor %}
-       </div>
+          {% endfor %}
+         </div>
+      </div>
     {% endfor %}
     <input type="submit" value="Register">
   </form>
