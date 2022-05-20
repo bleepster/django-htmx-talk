@@ -1,0 +1,26 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+<div class="logout">
+  <a href="/logout">Logout</a>
+</div>
+<div>
+  <form action="{% url "polls:index" %}" method="post">
+    {% csrf_token %}
+    <div class="questions-selection">
+      <div><label for="questions_select">Questions</label></div>
+      <select id="questions_select" name="question" hx-trigger="change, load" hx-get="{% url "polls:get_choices" %}" hx-target="#choices_select">
+        {% for question in questions %}
+        <option value="{{ question.id }}">{{ question.question_text }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div id="choices_selection" class="choices-selection">
+      <div><label for="choices_select">Choices</label></div>
+      <select id="choices_select" name="choice">
+      </select>
+    </div>
+    <input type="submit" value="Vote">
+  </form>
+</div>
+{% endblock %}
