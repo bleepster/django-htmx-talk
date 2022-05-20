@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="{% static 'polls/style.css' %}" rel="stylesheet" />
+    <title>Polls</title>
+    <script type="text/javascript">
+      function onQuestionSelectChange(o) {
+        if (o.value === 'None') {
+          const target = document.getElementById('choices_selection');
+          const current_choices = document.getElementById('choices_select');
+          target.removeChild(document.getElementById('choices_select'));
+
+          const newChoicesSelect = document.createElement("select");
+          newChoicesSelect.id = "choices_select";
+          newChoicesSelect.name = "choice";
+          option = document.createElement('option');
+          option.text = '----------';
+          option.value = 'None';
+          newChoicesSelect.add(option);
+          target.appendChild(newChoicesSelect);
+          return;
+        }
+        const url = `${o.value}/choices/`;
+        fetch(url)
+          .then(function(response) {
+            if (response.status !== 200) {
+              return;
+            }
+
+            response.json().then(function(response) {
+              if (response['error_message'] !== null) {
+                return;
+              }
+
+              const target = document.getElementById('choices_selection');
+              const current_choices = document.getElementById('choices_select');
+              target.removeChild(document.getElementById('choices_select'));
+
+              const newChoicesSelect = document.createElement("select");
+              newChoicesSelect.id = "choices_select";
+              newChoicesSelect.name = "choice";
+              const choices = response['choices'];
+              choices.forEach(function(item, idex) {
+                option = document.createElement('option');
+                option.id = `${item.choice_text}_${item.choice_id}`;
+                option.text = item.choice_text;
+                option.value = item.choice_id;
+                newChoicesSelect.add(option);
+              });
+
+              target.appendChild(newChoicesSelect);
+            });
+          })
+          .catch(function(error) {
+            console.error("Fetch Error: ", error);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

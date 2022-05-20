@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #444;
+  font-family: sans-serif;
+  border-top: 10px solid #00264d;
+  position: relative;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+
+  display: grid;
+}
+
+.poll-header {
+  padding: 20px 40px;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.poll-question-choice {
+  font-size: 22px;
+}
+
+.poll-question {
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #00264d;
+}
+
+.questions-selection {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.choices-selection {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+select {
+  font-size: 20px;
+}
+
+option {
+  font-size: 20px;
+}
+
+.result-entry {
+  font-size: 22px;
+
+  padding: 5px;
+  margin: 5px 5px;
+}
+
+.login {
+  padding: 20px 40px;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logout {
+  text-align: right;
+}
+
+.login-input-group {
+  padding-bottom: 11px;
+}
+
+.login-error-message {
+  padding-bottom: 11px;
+}
+
+ul.errorlist {
+  list-style-type: none;
+}
+
+.register-input-group {
+  padding-bottom: 11px;
+}
+
+.register-error-message {
+  padding-bottom: 11px;
+  color: #ff8080;
+  font-size: 12px;
+  font-style: italic;
+}
+
+input[type=text],
+input[type=password],
+input[type=email]
+{
+  border: none;
+  outline: none;
+  padding: 5px 5px 8px 0px;
+  width: 100%;
+  font-size: 18px;
+  border-bottom: solid 1px #efefef;
+}
+
+input[type=radio] {
+  cursor: pointer;
+
+  padding: 5px;
+  margin: 5px 5px;
+}
+
+input[type=submit] {
+  color: #fff;
+  width: 89px;
+  border: none;
+  border-radius: 9px;
+  background: #00264d;
+  cursor: pointer;
+
+  padding: 5px;
+  margin-top: 5px;
+}
+
+fieldset {
+  border: none;
+}
+
+h1,
+h2,
+h3 {
+  color: #00264d;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Styling links */
+a:link {
+  color: #00264d;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #00264d;
+}
+
