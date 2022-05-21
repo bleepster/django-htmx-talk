@@ -1,66 +1,54 @@
-# Overview
+# Example 1
 
-## Django Recap
+- Basic form submission
+  - avoid POST/Redirect/GET
+  - template fragment as response
+- `example_1_1` directory contains django without htmx
+- `exmaple_1_2` directory contains django with htmx
 
-- Django's roots
-  - MTV pattern
-  - early 2000s web development
-  - written for applications used to publish articles
-- Django model/view/template
-  - model (persistent data)
-  - view (logic)
-  - template (document parsed and returned to the browser)
-- Django needs javascript (inevitable)
-  - cons: maintenance issue
-    - javacript libraries 
-    - javascript libraries update frequently
+# Example 2
 
-## What is htmx?
+- Input validation
+  - avoid waiting for form submission to get feedback for errors
+- `example_2_1` directory contains django without htmx
+- `exmaple_2_2` directory contains django with htmx
 
-- Javascript library
-- extends html, DSL
-- pairs well with django templates
+# Example 3
 
-- Talks specifically about htmx
-- [here](https://youtu.be/cBfz4W_KvEI?list=PLPxWAqiM9MhdKV6kiX2Ofa-mVKATzVVj9)
-- [here](https://youtu.be/u2rjnLJ1M98?list=PLPxWAqiM9MhdKV6kiX2Ofa-mVKATzVVj9)
+- Dropdown menu
+  - avoid using APIs
+- `example_3_1` directory contains django without htmx
+  - uses javascript for fetching the dropdown contents from an API
+- `exmaple_3_2` directory contains django with htmx
 
-## Why would you use htmx?
+# Running the examples
 
-### Developer
+## Prerequisite
 
-- Improve long term maintenance
-- No javascript maintenance
-- DSL is easy to understand
+- Python
+- pip
 
-### Application
+## Packages
 
-- "Dynamic" feel for the user
-- Optimized responses
+In the root directory of this repo, install required packages
 
-## Examples
+```
+$ python -m pip install --upgrade pip
+$ python -m pip install -r requirements.txt
+```
 
-### Form submission
+## Run the server
 
-- emphasis on improvements to Django's POST/Redirect/GET pattern
+In any of the examples directory, execute the commands below
 
-### Page fragments
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver
+```
 
-- emphasis on response fragments returned
+Alternatively, you can also add default data
 
-### Form validation
-
-- emphasis on having one true source of validation (backend)
-- provide early feedback (for errors) in the front-end
-
-### Dropdowns
-
-- avoid json apis, generate plain html
-
-### Modal Windows
-
-- displaying modal windows
-
-### Django Admin
-
-- ways to use htmx on Django Admin
+```
+$ python manage.py seed 
+```
