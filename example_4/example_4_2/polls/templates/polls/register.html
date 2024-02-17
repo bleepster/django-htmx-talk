@@ -1,0 +1,26 @@
+{% extends "polls/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="register-form">
+  <form action="{% url "polls:register" %}" method="post">
+  {% comment %}
+  <form hx-post="{% url "polls:register" %}" hx-indicator="#pulse">
+  {% endcomment %}
+    {% csrf_token %}
+    <div class="register-input-container">
+      {{ register_form.non_field_errors }}
+      {% for field in register_form %}
+        {{ field }}
+        <i id="{{field.name}}_error" >{{ field.errors|first }}</i>
+      {% endfor %}
+      <button type="submit">Register</button>
+      {% comment %}
+      <button type="submit">
+        Register <img id="pulse" class="htmx-indicator" src="{% static 'pulse-rings-multiple.svg' %}">
+      </button>
+      {% endcomment %}
+    </div>
+  </form>
+</div>
+{% endblock %}

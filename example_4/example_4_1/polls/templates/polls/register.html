@@ -1,0 +1,17 @@
+{% extends "polls/base.html" %}
+
+{% block content %}
+<div class="register-form">
+  <form action="{% url "polls:register" %}" method="post">
+    {% csrf_token %}
+    <div class="register-input-container">
+      {{ register_form.non_field_errors }}
+      {% for field in register_form %}
+        {{ field }}
+        <i id="{{field.name}}_error" >{{ field.errors|first }}</i>
+      {% endfor %}
+      <button type="submit">Register</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
